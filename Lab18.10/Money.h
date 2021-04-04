@@ -10,6 +10,10 @@ public:
 	Money(const Money& other);
 	~Money();
 	Money& operator = (const Money& other);
+	bool operator != (const Money& other);
+	bool operator == (const Money& other);
+	bool operator <= (const Money& other);
+	Money operator -(const Money& other);
 	friend ostream& operator << (ostream& out, const Money& other);
 	friend istream& operator >> (istream& in, Money& other);
 	///////////////

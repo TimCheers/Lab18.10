@@ -26,6 +26,31 @@ Money& Money:: operator = (const Money& other)
 	this->R = other.R;
 	return *this;
 }
+bool Money:: operator != (const Money& other)
+{
+	return !(this->R == other.R && this->K == other.K);
+}
+bool Money:: operator == (const Money& other)
+{
+	return this->R == other.R && this->K == other.K;
+}
+bool Money:: operator <= (const Money& other)
+{
+	return this->R <= other.R && this->K <= other.K;
+}
+Money Money :: operator -(const Money& other)
+{
+	Money tmp;
+	int tmpK = 0, tmpR = 0;
+	tmp.R = this->R - other.R;
+	tmp.K = this->K - other.K;
+	if (this->K < other.K)
+	{
+		tmp.R--;
+		tmp.K = other.K - this->K;
+	}
+	return tmp;
+}
 ostream& operator << (ostream& out, const Money& other)
 {
 	return (out << other.R << '.' << other.K);
